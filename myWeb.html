@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ali Afana - Cybersecurity Professional Portfolio">
+
+    <link rel="preload" href="quber.jpeg" as="image">
+    <title>Ali Afana | Cyber Security Professional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Mono:wght@400;700&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #ff0000;
+            --secondary: #000000;
+            --accent: #ff3333;
+            --text: #ffffff;
+            --light-bg: #121212;
+            --dark-text: #e0e0e0;
+            --dark-bg: #0a0a0a;
+            --terminal: #1e1e1e;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Ubuntu Mono', monospace;
+        }
+
+        body {
+            background: var(--secondary);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 18px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Share Tech Mono', monospace;
+            color: var(--primary);
+        }
+
+        /* Auto-Hide Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+            transition: all 0.4s ease;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: transparent;
+            border-radius: 5px;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+        }
+
+        body.scrolling::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-color: var(--terminal);
+        }
+
+        body.scrolling::-webkit-scrollbar-track {
+            background: var(--terminal);
+        }
+
+        /* Firefox Support */
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: transparent transparent;
+        }
+
+        body.scrolling {
+            scrollbar-color: var(--primary) var(--terminal);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--secondary), #1a1a1a);
+            color: var(--text);
+            text-align: center;
+            padding: 4rem 1rem;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            border-bottom: 2px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(255, 0, 0, 0.1) 0%, transparent 70%);
+            z-index: 0;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.7);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin: 1rem 0;
+            text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            color: var(--text);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 0, 0, 0.2);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 0, 0, 0.4);
+            color: var(--primary);
+        }
+
+        nav {
+            background: var(--terminal);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .nav-link {
+            padding: 0.7rem 1.8rem;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 60%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--primary);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+            border-bottom: 1px solid rgba(255, 0, 0, 0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .about-content {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        /* Add to skill class */
+        .skill {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .skill:hover::after {
+            transform: scaleX(1);
+        }
+
+        .skill {
+            background: var(--terminal);
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            font-weight: 500;
+            border-left: 3px solid var(--primary);
+            transition: all 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background: var(--terminal);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(255, 0, 0, 0.2);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(255, 0, 0, 0.3);
+        }
+
+        .project-info {
+            padding: 1.8rem;
+        }
+
+        .project-info h3 {
+            margin-bottom: 0.8rem;
+            color: var(--primary);
+        }
+
+        .tryhackme-badge {
+            background: var(--terminal);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            margin: 2rem auto;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background: var(--terminal);
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 500;
+            color: var(--primary);
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 1rem;
+            background: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 6px;
+            font-size: 1rem;
+            color: var(--text);
+        }
+
+        textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem;
+            background: var(--terminal);
+            color: var(--text);
+            border-top: 1px solid var(--primary);
+        }
+
+        .terminal-cursor {
+            display: inline-block;
+            width: 10px;
+            height: 20px;
+            background: var(--primary);
+            vertical-align: middle;
+            margin-left: 3px;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            margin: auto;
+            max-width: 90%;
+            max-height: 90%;
+            border: 3px solid var(--primary);
+            border-radius: 5px;
+            box-shadow: 0 0 30px rgba(255, 0, 0, 0.6);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.show .modal-content {
+            transform: scale(1);
+        }
+
+        .close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            color: var(--primary);
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: var(--accent);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-content">
+            <img src="quber.jpeg" alt="Ali Afana" class="profile-img">
+            <h1>Ali Afana<span class="terminal-cursor"></span></h1>
+            <p class="tagline">Cyber Security Specialist | Penetration Tester | Security Analyst</p>
+            <div class="social-links">
+                <a href="#" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank" title="TryHackMe"><i class="fas fa-lock"></i></a>
+                <a href="#" target="_blank" title="HackTheBox"><i class="fas fa-cube"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-links">
+            <a href="#about" class="nav-link">About</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#certifications" class="nav-link">Certifications</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <section id="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Hello! I'm Ali Afana, a passionate cyber security student specializing in ethical hacking and
+                        penetration testing. I'm dedicated to understanding system vulnerabilities and developing robust
+                        security solutions.</p>
+                    <p>My journey in cyber security began with a curiosity about how systems can be protected (and
+                        exploited). Since then, I've been honing my skills through hands-on labs, CTF challenges, and
+                        real-world simulations.</p>
+                    <p>When I'm not studying vulnerabilities, you can find me participating in bug bounty programs,
+                        writing security-related blogs, or contributing to open-source security tools.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2 class="section-title">My Skills</h2>
+            <div class="skills-container" id="skills-list">
+                <div class="skill">Penetration Testing</div>
+                <div class="skill">Ethical Hacking</div>
+                <div class="skill">Network Security</div>
+                <div class="skill">Web App Security</div>
+                <div class="skill">Cryptography</div>
+                <div class="skill">Digital Forensics</div>
+                <div class="skill">Python Scripting</div>
+                <div class="skill">Bash Scripting</div>
+                <div class="skill">Metasploit Framework</div>
+                <div class="skill">Burp Suite</div>
+                <div class="skill">Wireshark</div>
+                <div class="skill">Nmap</div>
+            </div>
+        </section>
+
+        <section id="certifications">
+            <h2 class="section-title">Certifications</h2>
+            <div class="tryhackme-badge">
+                <h3>My TryHackMe Progress</h3>
+                <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=1856122"
+                    style='border:none; width:100%; height:300px;'></iframe>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2 class="section-title">Security Projects</h2>
+            <div class="projects-grid" id="projects-container">
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                        alt="Vulnerable Web App" class="project-img">
+                    <div class="project-info">
+                        <h3>Vulnerable Web App Lab</h3>
+                        <p>Created a deliberately vulnerable web application for security training purposes with common
+                            OWASP vulnerabilities.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                        alt="Network Scanner" class="project-img">
+                    <div class="project-info">
+                        <h3>Network Scanner Tool</h3>
+                        <p>Developed a Python-based network scanning tool with Nmap integration for vulnerability
+                            assessment.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80"
+                        alt="Security Blog" class="project-img">
+                    <div class="project-info">
+                        <h3>Security Awareness Blog</h3>
+                        <p>Regularly publish articles about common security threats and mitigation strategies for
+                            beginners.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2 class="section-title">Contact Me</h2>
+            <form class="contact-form" id="contact-form">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" required></textarea>
+                </div>
+                <button type="submit">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="year"></span> Ali Afana. All rights reserved.</p>
+    </footer>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script>
+        // Current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Lazy load images
+        document.addEventListener("DOMContentLoaded", function () {
+            const lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+
+            if ("IntersectionObserver" in window) {
+                let lazyImageObserver = new IntersectionObserver(function (entries, observer) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting) {
+                            let lazyImage = entry.target;
+                            lazyImage.src = lazyImage.dataset.src;
+                            lazyImageObserver.unobserve(lazyImage);
+                        }
+                    });
+                });
+
+                lazyImages.forEach(function (lazyImage) {
+                    lazyImageObserver.observe(lazyImage);
+                });
+            }
+        });
+        // Enhance the typing effect
+        function typeWriter(element, text, speed) {
+            let i = 0;
+            element.innerHTML = '';
+            function typing() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(typing, speed);
+                }
+            }
+            typing();
+        }
+        // Auto-Hide Scrollbar
+        let scrollTimeout;
+        function handleScroll() {
+            document.body.classList.add('scrolling');
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                document.body.classList.remove('scrolling');
+            }, 1000);
+        }
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+
+        // Active Section Detection
+        function updateActiveSection() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-link');
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Smooth Scrolling with Active Section Update
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+
+                window.scrollTo({
+                    top: targetSection.offsetTop - 20,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Image Modal Functionality
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImage");
+        const profileImg = document.querySelector(".profile-img");
+
+        profileImg.onclick = function () {
+            modal.classList.add("show");
+            modalImg.src = this.src;
+        }
+
+        document.querySelector(".close").onclick = function () {
+            modal.classList.remove("show");
+        }
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.classList.remove("show");
+            }
+        }
+
+        // Run on scroll and load
+        window.addEventListener('scroll', updateActiveSection);
+        window.addEventListener('load', updateActiveSection);
+
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+            this.reset();
+        });
+
+        // Terminal typing effect
+        const tagline = document.querySelector('.tagline');
+        if (tagline) {
+            const originalText = tagline.textContent;
+            tagline.textContent = '';
+            let i = 0;
+            const typing = setInterval(() => {
+                if (i < originalText.length) {
+                    tagline.textContent += originalText.charAt(i);
+                    i++;
+                } else {
+                    clearInterval(typing);
+                }
+            }, 50);
+        }
+    </script>
+</body>
+
+</html>
